@@ -1,6 +1,6 @@
 workflow "deploy on push" {
   on = "push"
-  resolves = "deploy"
+  resolves = "notify"
 }
 
 action "build" {
@@ -20,8 +20,8 @@ action "lint" {
   args = "run lint"
 }
 
-action "deploy" {
+action "notify" {
   needs = ["test", "lint"]
-  uses = "actions/zeit-now@master"
-  secrets = ["ZEIT_TOKEN"]
+  uses = "actions/bin/sh@master"
+  args = ["ls -ltr"]
 }
