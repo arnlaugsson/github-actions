@@ -23,5 +23,5 @@ action "lint" {
 action "notify" {
   needs = ["test", "lint"]
   uses = "actions/bin/sh@master"
-  args = ["echo \"I did it!\""]
+  args = ["echo \"I finally did it!\""]
 }
